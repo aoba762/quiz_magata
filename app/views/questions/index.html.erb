@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag 'questions_index', :media => "all" %>
+<h1>クイズ一覧</h1>
+<div class="quiz-container">
+    <div class="filter">
+        <%= form_with(url: questions_path, method: :get, local: true) do %>
+            <%= select_tag :genre_id, options_from_collection_for_select(@genres, :id, :name), prompt: "全てのジャンル", class: "genre-select" %>
+            <%= submit_tag "検索", class: "search-button" %>
+        <% end %>
+    </div>
+
+    <ul class="quiz-list">
+        <% @questions.each do |question| %>
+            <li class="quiz-item">
+                <%= link_to question.content, question_path(question), class: "quiz-link" %>
+            </li>
+        <% end %>
+    </ul>
+</div>

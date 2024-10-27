@@ -1,0 +1,16 @@
+<%= stylesheet_link_tag 'questions_reason', media: "all" %>
+<h1 class="reason-title">回答理由を記入</h1>
+
+<div class="reason-container">
+    <p class="reason-prompt">あなたが「<%= @user_answer.upcase %>」を選んだ思考（理由）を教えてください。</p>
+
+    <%= form_with url: answer_question_path(@question), method: :post do %>
+        <div class="reason-field">
+            <%= text_area_tag :reason, nil, placeholder: "理由を記入してください", class: "reason-input" %>
+        </div>
+        <%= hidden_field_tag :answer, @user_answer %>
+        <div class="button-container">
+            <%= submit_tag '回答結果を見る', class: 'submit-button' %>
+        </div>
+    <% end %>
+</div>

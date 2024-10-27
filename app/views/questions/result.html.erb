@@ -1,0 +1,22 @@
+<%= stylesheet_link_tag 'questions_result', media: "all" %>
+<h1 class="result-title">回答結果</h1>
+
+<div class="result-container">
+    <% if @correct %>
+        <p class="result-message correct">選択した回答は正解です！</p>
+    <% else %>
+        <p class="result-message incorrect">選択した回答は不正解です。正しい答えは「<%= @question.correct_answer.upcase %>」です。</p>
+    <% end %>
+
+    <div class="explanation-block">
+        <p class="kaisetu-text"><strong>解説:</strong> <%= @question.kaisetu %></p>
+    </div>
+    <p>回答理由はご自身で合っているかどうかご確認ください</p>
+    <div class="user-reason-block">
+        <p class="user-reason">あなたの回答理由: <%= params[:reason].presence || "なし" %></p>
+    </div>
+
+    <div class="button-container">
+        <%= link_to '他の問題へ', questions_path, class: 'next-button' %>
+    </div>
+</div>

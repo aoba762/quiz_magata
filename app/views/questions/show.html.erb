@@ -1,0 +1,20 @@
+<%= stylesheet_link_tag 'questions_show', media: "all" %>
+<h1 class="question-title"><%= @question.content %></h1>
+
+<%= form_with url: reason_question_path(@question), method: :get do %>
+    <div class="answer-options">
+        <div class="answer-option">
+            <%= radio_button_tag 'answer', 'a', false, id: 'answer_a' %>
+            <%= label_tag 'answer_a', @question.answer_a, class: 'answer-label' %>
+        </div>
+        <div class="answer-option">
+            <%= radio_button_tag 'answer', 'b', false, id: 'answer_b' %>
+            <%= label_tag 'answer_b', @question.answer_b, class: 'answer-label' %>
+        </div>
+    </div>
+    <div class="button-container">
+        <%= submit_tag '回答する', class: 'submit-button' %>
+    </div>
+<% end %>
+
+
